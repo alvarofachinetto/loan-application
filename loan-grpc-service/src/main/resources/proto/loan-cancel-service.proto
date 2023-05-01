@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package com.loan.application.grpc.service;
+option java_multiple_files = true;
+
+message LoanCancelRequest{
+  string solicitationId = 1;
+}
+
+message LoanCancelResponse{
+  string message = 1;
+}
+
+service LoanCancelService{
+  rpc cancel(LoanCancelRequest) returns (LoanCancelResponse);
+}
+

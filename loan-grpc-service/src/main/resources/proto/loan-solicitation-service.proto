@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package com.loan.application.grpc.service;
+option java_multiple_files = true;
+
+enum LoanType{
+    PERSONAL_LOAN = 0;
+    AUTO_LOAN = 1;
+    STUDENT_LOAN = 2;
+    MORTGAGE_LOAN = 3;
+    HOME_EQUITY_LOAN = 4;
+    CREDIT_BUILDER_LOAN = 5;
+    DEBIT_CONSOLIDATION_LOAN = 6;
+    PAYDAY_LOAN = 7;
+}
+
+message LoanSolicitationRequest{
+  LoanType type = 1;
+  double income = 2;
+  int32 durationInMonths = 3;
+  string cpf = 4;
+}
+
+message LoanSolicitationResponse{
+  string message = 1;
+}
+
+service LoanSolicitationService{
+  rpc process(LoanSolicitationRequest) returns (LoanSolicitationResponse);
+}
+
+
